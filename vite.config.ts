@@ -6,7 +6,6 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/Management-Report-new/'
     plugins: [react(), tailwindcss()],
     base: '/Management-Report-new/',
     define: {
