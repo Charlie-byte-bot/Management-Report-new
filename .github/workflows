@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ] # 监听 main 分支的推送
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # 拉取代码
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 使用 Node 20
+
+      - name: Install Dependencies
+        run: npm install # 安装依赖
+
+      - name: Build
+        run: npm run build # 运行打包命令，生成 dist 文件夹
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3 # 部署插件
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # 告诉它去 dist 文件夹里找文件
