@@ -8,6 +8,7 @@ export default defineConfig(({mode}) => {
   return {
     base: '/Management-Report-new/'
     plugins: [react(), tailwindcss()],
+    base: '/Management-Report-new/',
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
